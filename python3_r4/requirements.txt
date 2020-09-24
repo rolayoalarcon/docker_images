@@ -1,0 +1,12 @@
+fastcluster
+matplotlib
+pandas
+scikit-learn
+seaborn
+tqdm
+jupyter
+xlrd
+statsmodels
+wes
+palettable
+openpyxl
