@@ -34,7 +34,7 @@ RUN pip3 install --upgrade pip \
 
 
 # Installing some important R packages
-RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2"); install.packages("dplyr"); install.packages("BiocManager"); BiocManager::install(c("edgeR", "DESeq2", "GenomicAlignments", "rtracklayer"));'
+RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2"); install.packages("dplyr"); install.packages("BiocManager"); BiocManager::install(c("edgeR", "DESeq2", "GenomicAlignments", "rtracklayer", "BiocParallel"));'
 
 # This part is important for using R in jupyter 
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("IRkernel"); IRkernel::installspec(user = FALSE)'
