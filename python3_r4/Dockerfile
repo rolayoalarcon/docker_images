@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # First some commands that are necessary
-RUN apt-get update && apt-get install -y gnupg2 software-properties-common libcurl4-gnutls-dev libxml2-dev
+RUN apt-get update && apt-get install -y gnupg2 software-properties-common libcurl4-gnutls-dev libxml2-dev libssl-dev
 
 # First we will install some dependencies for python and R
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -34,7 +34,7 @@ RUN pip3 install --upgrade pip \
 
 
 # Installing some important R packages
-RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2"); install.packages("dplyr"); install.packages("BiocManager"); BiocManager::install(c("edgeR", "DESeq2", "GenomicAlignments", "rtracklayer", "BiocParallel"));'
+RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("ggplot2"); install.packages("dplyr"); install.packages("BiocManager"); BiocManager::install(c("edgeR", "DESeq2", "GenomicAlignments", "rtracklayer", "BiocParallel", "clusterProfiler"));'
 
 # This part is important for using R in jupyter 
 RUN Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=1); install.packages("IRkernel"); IRkernel::installspec(user = FALSE)'
